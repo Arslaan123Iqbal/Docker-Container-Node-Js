@@ -1,0 +1,19 @@
+Images 
+FROM node:15            For Bulding   run in terminal : docker build . 
+WORKDIR /app           
+COPY package.json .    For change or give docker image name run command: docker build -t node-app-image  .
+RUN npm install
+COPY . ./
+ENV PORT 3000
+EXPOSE $PORT
+CMD ["npm","run","dev"]
+
+# For Docker run  : docker run -d --name node-app node-app-image   For creating container   {   use Commad: docker ps} 
+                                         {container {image name}
+                                         name}  
+# For run docker on localhost give : docker run -p 3000:3000 -d --name node-app node-app-image
+port number                                     {Port}                 {conatiner {image name}
+                                                                           name}
+# For check whats in our container Step 1: docker exec -it node-app bash
+                                    Step 2 :: use  "ls"
+# TO create volume for persistent data command: docker run -v ${pwd}:/app -p 3000:3000 -d --name node-app node-app-image
